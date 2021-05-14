@@ -1,5 +1,7 @@
 # FoodieApp
 
+Demonstrated Angular Basics (Angular CLI, Components creation, String Interpolation, Data Binding, Property Binding, Event Binding, Two way Binding, Directives( ngIf, ngFor, ngClass, ngStyle), etc.)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
 ## Development server
