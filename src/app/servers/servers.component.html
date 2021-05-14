@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="col-xs-12">
+
+        <label>Server Name</label>
+        <input type= "text" class="form-control" (input)="onUpdateServer($event)"> 
+        <!-- $event fetches event data -->
+        <P> <b>Server Name Printed dynamically :</b> {{serverName}}</P>
+        
+        <!-- Two way Binding -->
+        <label>Admin Name</label>
+        <input type= "text" class="form-control" [(ngModel)]="adminName"> 
+        <!-- $event fetches event data -->
+        <P><b>Admin Name Printed dynamically :</b> {{adminName}}</P>
+        
+        <button class="btn btn-primary" [disabled] = "disabled" (click)="onCreateServer()" > 
+            Add Server
+        </button >
+
+        <!-- <p>{{serverCreateStatus}}</p> All sort of data binding is used to print this after entering inputs and hitting Add Server Button -->
+        <p *ngIf="serverCreated; else noServer" [ngStyle]="{'background-color': getColor()}" [ngClass]="{server_css_class : serverCreated === true}"> Server was created with Server Name : {{serverName}}</p>
+        <ng-template #noServer>
+            <p [ngStyle]="{'background-color': getColor()}" [ngClass]="{no_server_css_class : serverCreated === false}">No Server was created</p>
+        </ng-template>
+
+        <p><b>( Using String Interpolation) Is Add Server Button Disabled  :</b> {{disabled}}</p>
+        <p><b>( Using property binding) Is Add Server Button Disabled :</b> <span [innerText] = "disabled"></span></p>
+        
+        <hr>
+
+        <!-- Two way Binding -->
+        <label>User Name</label>
+        <input type= "text" class="form-control" [(ngModel)]="userName"> <!-- Note: Try to use any one of two-way binding or event-binding but not both-->
+        <!-- $event fetches event data -->
+        <P><b>User Name Printed dynamically :</b> {{userName}}</P>
+        
+        <button class="btn btn-primary" (click)="onResetUser()" [disabled] = "userName === ''">Reset User</button>
+        <!--  Can also be implemented as
+            <button class="btn btn-primary" (click)="username = ''" [disabled] = "userName === ''">Reset User</button> -->
+
+        <hr>
+        <button class="btn btn-primary" (click)="toggleDetails()">Display Details</button>
+        <p *ngIf = "showDetails">Secret Password : tuna</p>
+        <p *ngFor="let logItem of log" [ngStyle]="{'background-color': logItem >=5 ? 'blue':'transparent'}"
+            [ngClass]="{'white-text': logItem >=5}">
+            {{logItem}}
+        </p>
+        <app-server></app-server>
+        
+
+
+    </div>
+</div>
